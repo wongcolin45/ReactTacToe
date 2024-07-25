@@ -33,4 +33,5 @@ A simple Tic-Tac-Toe game built with React.js. This project demonstrates the use
 ## Future fixes 
 
 -Need to optimizize more 
+
 -divide up Grid into more reusable components
