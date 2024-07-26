@@ -1,6 +1,6 @@
 
 function GameOver(props) {
-    console.log("Game over is "+props.result);
+   
     if (props.result== null) {
         return <></>
     }

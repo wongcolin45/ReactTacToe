@@ -55,9 +55,7 @@ class Board {
                 count++;
             }
         } 
-        if (temp.includes(0)) {
-            console.log('possible moves has 0!!!');
-        }
+       
         return temp;
     }
     isValidMove(move) {
@@ -267,7 +265,7 @@ function getBestMove(array, maximizingPlayer) {
         possibleMoves = possibleMoves.reverse()
     }
    
-    board.display();
+   
     const depth = possibleMoves.length;
 
     
@@ -304,7 +302,7 @@ function gameResult(array) {
    
     const board = new Board();
     board.setGrid(grid)
-    console.log("Board winner is "+board.getWinner());
+    
     return board.getWinner();
    
 }

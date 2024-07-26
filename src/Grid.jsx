@@ -7,15 +7,10 @@ import GameOver from './GameOver.jsx';
 function Grid() {
     const [values, setValues] = useState(Array(9).fill(" ")); 
     const [turn, setTurn] = useState("X");
-   
-    
-    
 
     const changeTurn = () => {
-        setTurn((turn == "X") ? "O" : "X")
+        setTurn(prevTurn => (prevTurn == "X") ? "O" : "X")
     }
-
- 
 
     const handleGenerateMove = () => {
        
@@ -26,21 +21,24 @@ function Grid() {
         }
     }
 
+    
     const handleClick = (index) => {
         if (values[index] == " " && gameResult(values) == null) {
           
-            const newValues = [...values]
-            newValues[index] = turn
-            setValues(newValues)
+            
+            setValues((prev) => {
+                const newValues = [...prev];
+                newValues[index] = turn;
+                return newValues;
+            })
             changeTurn();
             
-          
         }
     }
 
     const handleResetClick = () => {
         setValues(Array(9).fill(" "))
-        setTurn("X");
+        setTurn(prevTurn => "X");
     }
 
     function renderTile(index) {
