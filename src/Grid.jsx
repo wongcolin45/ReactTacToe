@@ -1,6 +1,6 @@
 
-import React, {useState, useEffect} from 'react';
-import {Board, getBestMove, gameResult} from './TicTacToe.js'
+import  {useState, useEffect} from 'react';
+import {getBestMove, gameResult} from './TicTacToe.js'
 import GameOver from './GameOver.jsx';
 
 
@@ -13,32 +13,33 @@ function Grid() {
     }
 
     const handleGenerateMove = () => {
-       
         if (gameResult(values) == null) {
-            const maximizingPlayer = (turn == 'X') ? true : false;
+            const maximizingPlayer = turn === 'X';
             const bestMove = getBestMove(values, maximizingPlayer) - 1;
-            handleClick(bestMove);
+            move(bestMove);
         }
     }
 
-    
-    const handleClick = (index) => {
-        if (values[index] == " " && gameResult(values) == null) {
-          
-            
+    function move(index) {
+        if (values[index] === " " && gameResult(values) == null) {
             setValues((prev) => {
                 const newValues = [...prev];
                 newValues[index] = turn;
                 return newValues;
             })
             changeTurn();
-            
+        
         }
+  
     }
+
+    
+    const handleClick = (index) => move(index);
+    
 
     const handleResetClick = () => {
         setValues(Array(9).fill(" "))
-        setTurn(prevTurn => "X");
+        setTurn(() => "X");
     }
 
     function renderTile(index) {
@@ -52,7 +53,6 @@ function Grid() {
     
     return (
         <>
-                    
             <div className="grid">
                 <div className="row">
                     {renderTile(0)} 
@@ -70,11 +70,8 @@ function Grid() {
                     {renderTile(6)} 
                     {renderTile(7)} 
                     {renderTile(8)} 
-                </div>  
-
+                </div>
             </div>
-           
-
 
             <button className="button"
                     onClick = {handleGenerateMove}>generate move</button>
@@ -83,8 +80,6 @@ function Grid() {
             
             <GameOver result={gameResult(values)} winner={"yes"}/>
         </>
-            
-        
     )
 }
 
