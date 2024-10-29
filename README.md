@@ -2,6 +2,9 @@
 
 This project is an implementation of the classic Tic-Tac-Toe game using React.js, featuring an AI opponent using the minimax algorithm.
 
+Click below to play:
+https://wongcolin45.github.io/ReactTacToe/ 
+
 ## Features
 
 - Interactive Tic-Tac-Toe game board
